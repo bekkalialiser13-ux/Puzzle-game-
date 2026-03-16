@@ -1,0 +1,18 @@
+extends CharacterBody2D
+
+var is_moving = false
+var grid_size = 128
+
+func push(direction: Vector2):
+	if is_moving:
+		return
+	
+	is_moving = true
+	var target_position = position + direction * grid_size
+	
+	# Анимация движения
+	var tween = create_tween()
+	tween.tween_property(self, "position", target_position, 0.2)
+	await tween.finished
+	
+	is_moving = false
