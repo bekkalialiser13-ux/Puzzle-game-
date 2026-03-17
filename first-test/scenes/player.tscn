@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b71yxe1uua728"]
+[gd_scene load_steps=7 format=3 uid="uid://b71yxe1uua728"]
 
 [ext_resource type="Script" uid="uid://3rgx6jcqeka6" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cpajxa8iyowwt" path="res://scenes/гг.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://bi3nui757g8a2" path="res://scenes/menubtn.gd" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -18,22 +19,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 32.851288
-height = 65.91804
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(31, 52)
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, 30)
+position = Vector2(-2, 30)
 sprite_frames = SubResource("SpriteFrames_qlg0r")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.000001, 56)
-rotation = -0.8552113
-skew = 0.2443461
-shape = SubResource("CapsuleShape2D_g2els")
+position = Vector2(-3.5000005, 67)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="menubtn" type="Button" parent="CanvasLayer"]
+offset_left = 501.0
+offset_top = 17.0
+offset_right = 639.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+script = ExtResource("3_qhqgy")
+
+[connection signal="pressed" from="CanvasLayer/menubtn" to="CanvasLayer/menubtn" method="_on_pressed"]
