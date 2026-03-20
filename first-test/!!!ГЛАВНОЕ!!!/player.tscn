@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://26h7vngikfhg"]
+
+[ext_resource type="Script" uid="uid://cth8g7wxnjnxe" path="res://!!!ГЛАВНОЕ!!!/player.gd" id="1_8rvq4"]
+[ext_resource type="Texture2D" uid="uid://cpajxa8iyowwt" path="res://scenes/гг.png" id="2_0o1xj"]
+[ext_resource type="Script" uid="uid://bi3nui757g8a2" path="res://МЕНЮ/menubtn.gd" id="3_0kghd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_0o1xj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(31, 52)
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 15
+script = ExtResource("1_8rvq4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 30)
+sprite_frames = SubResource("SpriteFrames_qlg0r")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5000005, 67)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="menubtn" type="Button" parent="CanvasLayer"]
+offset_left = 501.0
+offset_top = 17.0
+offset_right = 639.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+script = ExtResource("3_0kghd")
+
+[connection signal="pressed" from="CanvasLayer/menubtn" to="CanvasLayer/menubtn" method="_on_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://df0muwdxqq5q"]
+
+[ext_resource type="Script" uid="uid://baoxr58no4vf5" path="res://level 2/platform.gd" id="1_8uyj2"]
+[ext_resource type="PackedScene" uid="uid://b4haii60ucw52" path="res://level 2/platformlow.tscn" id="2_8uyj2"]
+[ext_resource type="PackedScene" uid="uid://q7cx16uovljq" path="res://level 2/platformhigh.tscn" id="3_yfhqb"]
+
+[node name="platform" type="Node2D"]
+script = ExtResource("1_8uyj2")
+
+[node name="PlatformLow" parent="." instance=ExtResource("2_8uyj2")]
+
+[node name="PlatformHigh" parent="." instance=ExtResource("3_yfhqb")]
+visible = false
