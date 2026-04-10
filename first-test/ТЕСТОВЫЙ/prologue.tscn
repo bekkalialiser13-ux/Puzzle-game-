@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://spmmtvqj5uk3"]
+[gd_scene load_steps=14 format=3 uid="uid://spmmtvqj5uk3"]
 
 [ext_resource type="Texture2D" uid="uid://bwbj0wb1bkwgy" path="res://!!!ГЛАВНОЕ!!!/walltile.png" id="1_crqai"]
 [ext_resource type="Texture2D" uid="uid://bh20fws6dr0mn" path="res://!!!ГЛАВНОЕ!!!/poltile.png" id="2_dp226"]
+[ext_resource type="Texture2D" uid="uid://bmvnc3o61ednj" path="res://!!!ГЛАВНОЕ!!!/floor.png" id="3_cyaw5"]
 [ext_resource type="PackedScene" uid="uid://26h7vngikfhg" path="res://!!!ГЛАВНОЕ!!!/player.tscn" id="3_sahwa"]
 [ext_resource type="PackedScene" uid="uid://321g0444f10u" path="res://!!!ГЛАВНОЕ!!!/door.tscn" id="4_dp226"]
+[ext_resource type="Texture2D" uid="uid://68e5e3brexxk" path="res://notreadylevel/2ndpol.png" id="4_rmkcd"]
+[ext_resource type="AudioStream" uid="uid://dnw4ustnyjqj8" path="res://Звуки/short-click-of-a-computer-mouse.mp3" id="6_cyaw5"]
+[ext_resource type="PackedScene" uid="uid://pcgtreslc8nu" path="res://scenes/Box.tscn" id="7_nhjl2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cyaw5"]
 texture = ExtResource("1_crqai")
@@ -45,19 +49,37 @@ texture = ExtResource("2_dp226")
 8:0/size_in_atlas = Vector2i(8, 8)
 8:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmkcd"]
+texture = ExtResource("3_cyaw5")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycckk"]
+texture = ExtResource("4_rmkcd")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/y_sort_origin = -12
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.2041, -37.2798, 63.885468, -38.235687, 64.204094, 64.682045, -63.75992, 64.02971)
+
 [sub_resource type="TileSet" id="TileSet_rmkcd"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cyaw5")
 sources/1 = SubResource("TileSetAtlasSource_nhjl2")
+sources/2 = SubResource("TileSetAtlasSource_rmkcd")
+sources/3 = SubResource("TileSetAtlasSource_ycckk")
 
 [node name="Prologue" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_rmkcd")
 format = 2
 layer_0/name = "1"
+layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(917508, 1, 16, 917516, 524289, 16, 917524, 524289, 16, 917532, 524289, 16, 917540, 524289, 16, 917548, 1048577, 16, 393220, 1, 8, -131068, 1, 8, -655356, 1, 8, -1179644, 1, 8, -1703932, 1, 8, -2228220, 1, 0, -2228212, 524289, 0, -2228204, 524289, 0, -2228196, 524289, 0, -2228188, 524289, 0, 393260, 1048577, 8, -131028, 1048577, 8, -655316, 1048577, 8, -1179604, 1048577, 8, -1703892, 1048577, 8, -2228180, 1048577, 0, -1703900, 524289, 8, -1703924, 524289, 8, -1703916, 524289, 8, -1703908, 524289, 8, -1179636, 524289, 8, -1179628, 524289, 8, -1179620, 524289, 8, -1179612, 524289, 8, -655324, 524289, 8, -655332, 524289, 8, -655348, 524289, 8, -655340, 524289, 8, -131060, 524289, 8, -131052, 524289, 8, -131044, 524289, 8, -131036, 524289, 8, 393252, 524289, 8, 393244, 524289, 8, 393236, 524289, 8, 393228, 524289, 8)
 layer_1/name = "2"
-layer_1/tile_data = PackedInt32Array(-2752508, 0, 0, -2752500, 0, 0, -2752492, 0, 0, -2752484, 0, 8, -2752476, 0, 0, -2752468, 0, 0, -3276756, 0, 0, -3276764, 0, 0, -3276772, 0, 0, -3276780, 0, 0, -3276788, 0, 0, -3276796, 0, 0)
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(-2752508, 0, 0, -2752500, 0, 0, -2752492, 0, 0, -2752484, 0, 8, -2752476, 0, 0, -2752468, 0, 0, -3276756, 0, 0, -3276764, 0, 0, -3276772, 0, 0, -3276780, 0, 0, -3276788, 0, 0, -3276796, 0, 0, -2228220, 3, 0, -2228212, 3, 0, -2228204, 3, 0, -982996, 3, 0, -983004, 3, 0, -983012, 3, 0, -983020, 3, 0)
 
 [node name="Area2D" parent="." instance=ExtResource("4_dp226")]
 position = Vector2(456, -664)
@@ -78,4 +100,14 @@ visible = false
 polygon = PackedVector2Array(8, 296, 778, 296, 776, -858, 8, -856, 8, 295, 6, 296, -6, -891, 807, -882, 795, 316, 5, 315, 7, 296)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 polygon = PackedVector2Array(392, -601, 392, -687, 518, -687, 518, -602, 778, -601, 536, -760, 223, -767, 7, -601)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cyaw5")
+bus = &"SFX"
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("7_nhjl2")]
+position = Vector2(72, -64)

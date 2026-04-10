@@ -1,50 +1,163 @@
-[gd_scene load_steps=7 format=3 uid="uid://26h7vngikfhg"]
+[gd_scene load_steps=17 format=3 uid="uid://26h7vngikfhg"]
 
 [ext_resource type="Script" uid="uid://cth8g7wxnjnxe" path="res://!!!ГЛАВНОЕ!!!/player.gd" id="1_8rvq4"]
-[ext_resource type="Texture2D" uid="uid://cpajxa8iyowwt" path="res://scenes/гг.png" id="2_0o1xj"]
+[ext_resource type="Texture2D" uid="uid://b45xpef4gihok" path="res://PlayerAnim/Pback.png" id="2_edvdg"]
 [ext_resource type="Script" uid="uid://bi3nui757g8a2" path="res://МЕНЮ/menubtn.gd" id="3_0kghd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("2_0o1xj")
-region = Rect2(0, 0, 128, 128)
+[ext_resource type="Texture2D" uid="uid://b2t603chgiva2" path="res://PlayerAnim/Pfront.png" id="3_mboy6"]
+[ext_resource type="Texture2D" uid="uid://h3xw3cqqf80f" path="res://PlayerAnim/Frontwalk1.png" id="4_hd4wj"]
+[ext_resource type="Texture2D" uid="uid://dkrwuya6285of" path="res://PlayerAnim/Frontwalk2.png" id="5_v14v0"]
+[ext_resource type="Texture2D" uid="uid://ns6uyxd13307" path="res://PlayerAnim/Frontwalk3.png" id="6_2a3lk"]
+[ext_resource type="Texture2D" uid="uid://bmsxwbby6eoqm" path="res://PlayerAnim/Frontwalk4.png" id="7_x4lqh"]
+[ext_resource type="Texture2D" uid="uid://bi3juw2mbkiii" path="res://PlayerAnim/Pleft.png" id="8_vtt6q"]
+[ext_resource type="Texture2D" uid="uid://br5f062lxt0hk" path="res://PlayerAnim/Pright.png" id="9_d758x"]
+[ext_resource type="AudioStream" uid="uid://htvhkjgo7eoc" path="res://Звуки/ХодьбаКамень1.mp3" id="11_hd4wj"]
+[ext_resource type="Script" uid="uid://cbgc7x70kkxap" path="res://!!!ГЛАВНОЕ!!!/pause.gd" id="12_2a3lk"]
+[ext_resource type="AudioStream" uid="uid://becdg238rli7j" path="res://Звуки/ХодьбаКамень2.mp3" id="12_v14v0"]
+[ext_resource type="AudioStream" uid="uid://dnw4ustnyjqj8" path="res://Звуки/short-click-of-a-computer-mouse.mp3" id="13_v14v0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
+"texture": ExtResource("2_edvdg")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mboy6")
+}],
+"loop": true,
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hd4wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v14v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2a3lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x4lqh")
+}],
+"loop": true,
+"name": &"FrontWalk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vtt6q")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_d758x")
+}],
+"loop": true,
+"name": &"Right",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(31, 52)
+size = Vector2(25, 29)
 
 [node name="player" type="CharacterBody2D"]
+process_mode = 1
+y_sort_enabled = true
 collision_mask = 15
 script = ExtResource("1_8rvq4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, 30)
+position = Vector2(-1, 33)
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"idle"
-autoplay = "idle"
+animation = &"Back"
+autoplay = "Front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5000005, 67)
+position = Vector2(-1.5000005, 70.5)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
-[node name="menubtn" type="Button" parent="CanvasLayer"]
-offset_left = 501.0
-offset_top = 17.0
-offset_right = 639.0
-offset_bottom = 67.0
+[node name="pausebtn" type="Button" parent="CanvasLayer"]
+offset_left = 284.0
+offset_top = 35.0
+offset_right = 422.0
+offset_bottom = 85.0
 theme_override_font_sizes/font_size = 30
 text = "Menu"
 script = ExtResource("3_0kghd")
 
-[connection signal="pressed" from="CanvasLayer/menubtn" to="CanvasLayer/menubtn" method="_on_pressed"]
+[node name="Click" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("13_v14v0")
+bus = &"SFX"
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_2a3lk")
+
+[node name="bg" type="Panel" parent="CanvasLayer/Pause"]
+modulate = Color(0, 0, 0, 0.5882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_right = 106.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "ПАУЗА"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="continuebtn" type="Button" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 345.0
+offset_right = 520.0
+offset_bottom = 420.0
+theme_override_font_sizes/font_size = 48
+text = "Продолжить"
+
+[node name="menubtn" type="Button" parent="CanvasLayer/Pause"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 487.0
+offset_right = 544.0
+offset_bottom = 562.0
+theme_override_font_sizes/font_size = 48
+text = "Выйти в меню"
+
+[node name="StepSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hd4wj")
+
+[node name="StepSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_v14v0")
+
+[connection signal="pressed" from="CanvasLayer/pausebtn" to="CanvasLayer/pausebtn" method="_on_pressed"]

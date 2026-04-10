@@ -11,9 +11,26 @@ config_version=5
 [application]
 
 config/name="FirstTest"
-run/main_scene="uid://dqrkj0hbq1tfj"
+run/main_scene="uid://c7dhrppc0vh0y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/low_processor_mode=true
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*res://audio_manager.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1600
+window/size/window_width_override=360
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[global]
+
+audio=false
 
 [input]
 
@@ -55,9 +72,10 @@ Action={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="box"
-2d_physics/layer_3="walls"
+2d_physics/layer_1="bg"
+2d_physics/layer_2="player"
+2d_physics/layer_3="obstacle"
+2d_physics/layer_4="bonus"
 
 [rendering]
 

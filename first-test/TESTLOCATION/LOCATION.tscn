@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7dhrppc0vh0y"]
+
+[ext_resource type="Texture2D" uid="uid://bmvnc3o61ednj" path="res://!!!ГЛАВНОЕ!!!/floor.png" id="1_780rd"]
+[ext_resource type="Texture2D" uid="uid://bh20fws6dr0mn" path="res://!!!ГЛАВНОЕ!!!/poltile.png" id="2_6gto7"]
+[ext_resource type="Texture2D" uid="uid://bu58ue8p5wkuy" path="res://Заглушки/blank.png" id="2_x4q0p"]
+[ext_resource type="Texture2D" uid="uid://bwbj0wb1bkwgy" path="res://!!!ГЛАВНОЕ!!!/walltile.png" id="3_x4q0p"]
+[ext_resource type="Texture2D" uid="uid://68e5e3brexxk" path="res://notreadylevel/2ndpol.png" id="4_q62hc"]
+[ext_resource type="PackedScene" uid="uid://26h7vngikfhg" path="res://!!!ГЛАВНОЕ!!!/player.tscn" id="5_qsorv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vr7nv"]
+texture = ExtResource("1_780rd")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q62hc"]
+texture = ExtResource("2_x4q0p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5w0xk"]
+texture = ExtResource("2_6gto7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdeha"]
+texture = ExtResource("3_x4q0p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lq3pa"]
+texture = ExtResource("4_q62hc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kyjdj"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vr7nv")
+sources/2 = SubResource("TileSetAtlasSource_5w0xk")
+sources/3 = SubResource("TileSetAtlasSource_fdeha")
+sources/4 = SubResource("TileSetAtlasSource_lq3pa")
+sources/1 = SubResource("TileSetAtlasSource_q62hc")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_kyjdj")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65541, 0, 0, 65540, 0, 0, 65539, 0, 0, 65538, 0, 0, 65537, 0, 0, 65536, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 4, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 0, 0, 327684, 0, 0, 327685, 0, 0, 262149, 0, 0, 393221, 4, 0, 393220, 4, 0, 393219, 0, 0, 327683, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 589833, 0, 0, 524297, 0, 0, 458761, 0, 0, 458760, 0, 0, 393224, 0, 0, 327688, 4, 0, 262152, 4, 0, 196616, 4, 0, 131080, 4, 0, 65544, 0, 0, 8, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 524296, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 589825, 0, 0, 524289, 0, 0, 458753, 0, 0, 458754, 0, 0, 524290, 0, 0, 524291, 0, 0, 458755, 0, 0, 458756, 0, 0, 524292, 0, 0, 524293, 0, 0, 458757, 0, 0, 458758, 0, 0, 524294, 0, 0, 524295, 0, 0, 458759, 0, 0, 393223, 0, 0, 327687, 0, 0, 262151, 0, 0, 196615, 0, 0, 131079, 4, 0, 65543, 0, 0, 7, 0, 0, 6, 0, 0, 65542, 0, 0, 131078, 4, 0, 196614, 0, 0, 262150, 0, 0, 327686, 0, 0, 393222, 0, 0, -65536, 3, 0, -131072, 3, 0, -196608, 3, 0, -196607, 3, 0, -131071, 3, 0, -65535, 3, 0, -65534, 3, 0, -131070, 3, 0, -196606, 3, 0, -196605, 3, 0, -131069, 3, 0, -65533, 3, 0, -65532, 3, 0, -131068, 3, 0, -196604, 3, 0, -196603, 3, 0, -131067, 3, 0, -65531, 3, 0, -65530, 3, 0, -131066, 3, 0, -196602, 3, 0, -196601, 3, 0, -131065, 3, 0, -65529, 3, 0, -65528, 3, 0, -131064, 3, 0, -196600, 3, 0, -196599, 3, 0, -131063, 3, 0, -65527, 3, 0)
+
+[node name="player" parent="." instance=ExtResource("5_qsorv")]
+position = Vector2(586, 1050)
+
+[node name="Camera2D" type="Camera2D" parent="player"]

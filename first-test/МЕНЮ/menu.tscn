@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqrkj0hbq1tfj"]
+[gd_scene load_steps=9 format=3 uid="uid://dqrkj0hbq1tfj"]
 
 [ext_resource type="Script" uid="uid://c57noociqhvrv" path="res://МЕНЮ/menu.gd" id="1_alljh"]
 [ext_resource type="Texture2D" uid="uid://usad86fbcfs1" path="res://scenes/текс пол.png" id="2_upf35"]
 [ext_resource type="Texture2D" uid="uid://bwtjfdi08v6tj" path="res://scenes/tiles.png" id="3_p0pf3"]
+[ext_resource type="AudioStream" uid="uid://usk6f2b407m3" path="res://Музыка/sonic289-game-defeat-game-over-373827_QB9Kz2WG.mp3" id="4_upf35"]
+[ext_resource type="AudioStream" uid="uid://dnw4ustnyjqj8" path="res://Звуки/short-click-of-a-computer-mouse.mp3" id="5_q08mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhnvy"]
 texture = ExtResource("2_upf35")
@@ -44,14 +46,14 @@ layer_2/y_sort_enabled = true
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 50
 limit_top = 50
-limit_right = 1100
-limit_bottom = 500
+limit_right = 770
+limit_bottom = 1650
 
 [node name="exit" type="Button" parent="."]
-offset_left = 68.0
-offset_top = 412.0
-offset_right = 238.0
-offset_bottom = 473.0
+offset_left = 70.0
+offset_top = 476.0
+offset_right = 240.0
+offset_bottom = 537.0
 theme_override_font_sizes/font_size = 35
 text = "EXIT"
 
@@ -63,5 +65,23 @@ offset_bottom = 370.0
 theme_override_font_sizes/font_size = 40
 text = "PLAY"
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_upf35")
+autoplay = true
+bus = &"Music"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_q08mt")
+bus = &"SFX"
+
+[node name="settings" type="Button" parent="."]
+offset_left = 71.0
+offset_top = 398.0
+offset_right = 239.0
+offset_bottom = 461.0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
